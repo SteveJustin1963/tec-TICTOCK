@@ -315,3 +315,116 @@ If you want, I can adapt this to a specific language (C++/Qt, Python/PyAudio, or
 
 
 
+Here’s a **concise ASCII flowchart** of the professional timegrapher pseudocode I gave you earlier. It captures the full pipeline without overwhelming detail:
+
+```
+         ┌─────────────────┐
+         │   Start/Init    │
+         │  (settings, I/O)│
+         └───────┬─────────┘
+                 │
+        ┌────────▼──────────┐
+        │  Audio Capture    │
+        │ (mic or sensor)   │
+        └────────┬──────────┘
+                 │ raw audio
+        ┌────────▼──────────┐
+        │  Pre-Processing   │
+        │ HPF/LPF + AGC     │
+        └────────┬──────────┘
+                 │ filtered signal
+        ┌────────▼──────────┐
+        │  Envelope Detect  │
+        │ (rectify/smooth)  │
+        └────────┬──────────┘
+                 │ energy trace
+        ┌────────▼──────────┐
+        │ Threshold & Peak  │
+        │   Detection       │
+        └────────┬──────────┘
+                 │ tick times
+        ┌────────▼──────────┐
+        │ Classify Tick/Tock│
+        │  (optional)       │
+        └────────┬──────────┘
+                 │ events
+ ┌───────────────▼────────────────┐
+ │   Metric Calculations           │
+ │  • Inter-beat intervals         │
+ │  • Rate (s/day)                 │
+ │  • Beat error (ms)              │
+ │  • Amplitude (°) est.           │
+ └───────────┬────────────────────┘
+             │ results
+     ┌───────▼────────┐
+     │   Stability    │
+     │ & Quality Check│
+     └───────┬────────┘
+             │
+     ┌───────▼────────┐
+     │   Display UI   │
+     │ Graph + Numbers│
+     └───────┬────────┘
+             │
+         ┌───▼───┐
+         │  Loop │
+         └───┬───┘
+             │
+        ┌────▼─────┐
+        │   End    │
+        └──────────┘
+```
+
+This flow shows the loop: **audio → signal processing → peak detection → metrics → quality check → UI update → repeat**.
+
+Do you want me to also make a **detailed “zoom-in” flowchart** just for the **metric calculations block** (rate, beat error, amplitude)? That’s where the heart of the timegrapher’s math lives.
+
+
+Perfect 👍 Here’s a **zoom-in ASCII flowchart** just for the **metric calculations block** of the timegrapher software — showing how it derives **rate, beat error, and amplitude** from the detected ticks:
+
+```
+        ┌────────────────────┐
+        │ Tick/Tock Times    │
+        │  (from detector)   │
+        └─────────┬──────────┘
+                  │
+        ┌─────────▼──────────┐
+        │ Compute Periods    │
+        │ (tick→next tick)   │
+        └─────────┬──────────┘
+                  │
+   ┌──────────────▼──────────────┐
+   │ Beat Error Calculation      │
+   │ Compare tick→tock vs half   │
+   │ of full period → error (ms) │
+   └──────────────┬──────────────┘
+                  │
+   ┌──────────────▼──────────────┐
+   │ Rate Calculation            │
+   │ Observed BPH vs Expected    │
+   │ Convert deviation → s/day   │
+   └──────────────┬──────────────┘
+                  │
+   ┌──────────────▼──────────────┐
+   │ Amplitude Estimation        │
+   │ Measure lift-time from tick │
+   │ waveform + use lift angle   │
+   │ → swing angle (degrees)     │
+   └──────────────┬──────────────┘
+                  │
+        ┌─────────▼─────────┐
+        │   Store/Output    │
+        │  Rate | Error |   │
+        │ Amplitude values  │
+        └───────────────────┘
+```
+
+So in short:
+
+* **Beat Error** = measures tick/tock symmetry.
+* **Rate** = compares observed beat rate vs expected → converts to seconds/day.
+* **Amplitude** = estimated from waveform “lift-time” + known lift angle.
+
+👉 Do you also want me to expand this into an **example calculation** (with sample numbers, like a 28,800 BPH watch showing +8s/day and 0.3ms beat error)? That would make it crystal clear how the math looks in practice.
+
+
