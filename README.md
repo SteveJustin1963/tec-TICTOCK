@@ -6,6 +6,7 @@ TEC-1's mechanical watch tick speed synchronizer
 
 
 - https://diywatch.club/en/blog/how-to-regulate-a-watch-using-a-timegrapher
+- https://apps.apple.com/au/app/watch-tuner-timegrapher/id991367080
 - 
 
 
