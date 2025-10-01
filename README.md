@@ -2,6 +2,15 @@
 TEC-1's mechanical watch tick speed synchronizer
 
 
+<img width="1500" height="1343" alt="image" src="https://github.com/user-attachments/assets/2e6e5fab-251a-470b-8601-0155eeda9ee9" />
+
+
+- https://diywatch.club/en/blog/how-to-regulate-a-watch-using-a-timegrapher
+- 
+
+
+
+
 
 Here’s an expanded version of your answer, focusing on **how the software works** when measuring watch accuracy:
 
